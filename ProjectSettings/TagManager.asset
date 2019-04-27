@@ -13,10 +13,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Border
+  - Background
+  - Interactables
+  - Characters
   - 
   - 
   - 
@@ -40,4 +40,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1180592981
+    locked: 0
+  - name: Interactables
+    uniqueID: 4455217
+    locked: 0
+  - name: Characters
+    uniqueID: 1430642691
     locked: 0
