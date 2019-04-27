@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4359965519959933440}
   - component: {fileID: 4359965519959933441}
   - component: {fileID: 4359965519959933442}
+  - component: {fileID: 3983904312246451457}
   m_Layer: 11
   m_Name: Vampire
   m_TagString: Untagged
@@ -142,3 +143,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vampSelected: 0
+--- !u!114 &3983904312246451457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4359965519959933447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a4bf8b1454de284cb3beae1a5872f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
