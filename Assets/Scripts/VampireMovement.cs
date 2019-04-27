@@ -32,8 +32,11 @@ public class VampireMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move(); // Process Movement
-        Jump(); // Process Jumping
+        if (gameObject.GetComponent<Rigidbody2D>())
+        {
+            Move(); // Process Movement
+            Jump(); // Process Jumping
+        }
     }
 
     void Move()
