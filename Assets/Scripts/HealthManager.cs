@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
-    private int maxHealth = 100;
-    private int health = 50;
+    private float maxHealth = 100f;
+    private float health = 50f;
 
-    public int GetHealth()
+    public float GetHealth()
     {
         return health;
     }
 
-    public bool GiveHealth(int amount)
+    public void SetHealth(float amount)
+    {
+        health = amount;
+
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+    }
+
+    public bool GiveHealth(float amount)
     {
         if ((health + amount) < maxHealth)
         {
@@ -25,12 +35,13 @@ public class HealthManager : MonoBehaviour
         }
     }
 
-    public void ApplyDamage(int amount)
+    public void ApplyDamage(float amount)
     {
         health -= amount;
 
         if (health <= 0)
         {
+            health = 0;
             Die();
         }
     }
@@ -38,11 +49,5 @@ public class HealthManager : MonoBehaviour
     public void Die()
     {
         Debug.LogError("Death Not Implemented");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

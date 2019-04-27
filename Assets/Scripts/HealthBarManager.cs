@@ -20,7 +20,7 @@ public class HealthBarManager : MonoBehaviour
 
     void Update()
     {
-        topHealthBarFillTransform.localScale = new Vector3(((float) topVampHealthManager.GetHealth()) / 100f, 1, 1);
-        bottomHealthBarFillTransform.localScale = new Vector3(((float) bottomVampHealthManager.GetHealth()) / 100f, 1, 1);
+        topHealthBarFillTransform.localScale = new Vector3(topVampHealthManager.GetHealth() / 100f, 1, 1);
+        bottomHealthBarFillTransform.localScale = new Vector3(bottomVampHealthManager.GetHealth() / 100f, 1, 1);
     }
 }
