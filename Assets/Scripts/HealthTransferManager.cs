@@ -11,8 +11,8 @@ public class HealthTransferManager : MonoBehaviour
 
     void Start()
     {
-        topHealthManager = transform.GetChild(0).GetComponent<HealthManager>();
-        bottomHealthManager = transform.GetChild(1).GetComponent<HealthManager>();
+        topHealthManager = GameObject.Find("Top Vampire").GetComponent<HealthManager>();
+        bottomHealthManager = GameObject.Find("Bottom Vampire").GetComponent<HealthManager>();
     }
 
     void Update()

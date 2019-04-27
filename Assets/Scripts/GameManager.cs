@@ -17,12 +17,12 @@ public class GameManager : MonoBehaviour
 
     public void LoadFirstLevel()
     {
-        SceneManager.LoadScene(1);
+        LoadLevel("Level_001");
     }
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene(0);
+        LoadLevel("Menu");
     }
 
     public void PauseGame()

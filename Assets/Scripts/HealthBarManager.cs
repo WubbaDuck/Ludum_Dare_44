@@ -11,10 +11,10 @@ public class HealthBarManager : MonoBehaviour
 
     void Start()
     {
-        topVampHealthManager = transform.parent.GetChild(0).GetComponent<HealthManager>();
-        bottomVampHealthManager = transform.parent.GetChild(1).GetComponent<HealthManager>();
-        topHealthBarFillTransform = transform.GetChild(0).GetChild(0);
-        bottomHealthBarFillTransform = transform.GetChild(1).GetChild(0);
+        topVampHealthManager = GameObject.Find("Top Vampire").GetComponent<HealthManager>();
+        bottomVampHealthManager = GameObject.Find("Bottom Vampire").GetComponent<HealthManager>();
+        topHealthBarFillTransform = GameObject.Find("Top Health Bar Fill").transform;
+        bottomHealthBarFillTransform = GameObject.Find("Bottom Health Bar Fill").transform;
 
     }
 

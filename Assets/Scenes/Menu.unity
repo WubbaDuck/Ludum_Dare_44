@@ -522,6 +522,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1665633752, guid: b87ad14d074dfff41b37588736d1db8d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b87ad14d074dfff41b37588736d1db8d, type: 3}
 --- !u!1 &459228529

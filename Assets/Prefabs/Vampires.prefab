@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 1609451904}
   - component: {fileID: 1609451905}
   m_Layer: 5
-  m_Name: healthbarFill
+  m_Name: Bottom Health Bar Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,6 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1665633753}
+  - component: {fileID: 1665633754}
   m_Layer: 11
   m_Name: Health Bars
   m_TagString: Untagged
@@ -191,6 +192,18 @@ Transform:
   m_Father: {fileID: 5634247115074363899}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1665633754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665633752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24c160581cbd49e478c245f3d6bd7c24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1985121218
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,7 +295,7 @@ GameObject:
   - component: {fileID: 2124409225}
   - component: {fileID: 2124409226}
   m_Layer: 5
-  m_Name: healthbarFill
+  m_Name: Top Health Bar Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -359,6 +372,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5634247115074363899}
+  - component: {fileID: 1766356812}
   m_Layer: 11
   m_Name: Vampires
   m_TagString: Untagged
@@ -383,6 +397,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1766356812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5634247115074363898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eac432ee11571a4a850e9e679a980a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5634247115107915852
 PrefabInstance:
   m_ObjectHideFlags: 0
