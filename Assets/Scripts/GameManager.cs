@@ -10,22 +10,22 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(name);
     }
 
-    void LoadNextLevel()
+    public void LoadNextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    void LoadFirstLevel()
+    public void LoadFirstLevel()
     {
         SceneManager.LoadScene(1);
     }
 
-    void LoadMenu()
+    public void LoadMenu()
     {
         SceneManager.LoadScene(0);
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
 
     }
