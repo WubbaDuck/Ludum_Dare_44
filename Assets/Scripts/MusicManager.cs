@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
+    static MusicManager instance;
+
     // public AudioClip[] musicArray;
     private AudioSource audioSource;
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     void Start()

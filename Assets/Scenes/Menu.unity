@@ -4683,7 +4683,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: <INSERT TITLE HERE>
+  m_Text: TRANSFUSION
 --- !u!222 &1789229303
 CanvasRenderer:
   m_ObjectHideFlags: 0
