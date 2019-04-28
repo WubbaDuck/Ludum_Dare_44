@@ -43,7 +43,7 @@ public class HealthManager : MonoBehaviour
         if (damageable)
         {
             health -= amount;
-            Debug.Log(amount);
+
             if (health <= 0)
             {
                 health = 0;

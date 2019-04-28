@@ -16,17 +16,18 @@ public class VampireMovement : MonoBehaviour
 
     Rigidbody2D rb;
     SpriteRenderer sr;
-    CapsuleCollider2D thisCollider;
+    BoxCollider2D thisCollider;
 
     private float moveSpeed = 6f;
     private float jumpPower = 25.0f;
+    private bool jumped = false;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-        thisCollider = GetComponent<CapsuleCollider2D>();
+        thisCollider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -92,7 +93,7 @@ public class VampireMovement : MonoBehaviour
     void Jump()
     {
         // Don't allow jumping unless the vampire is touching the ground or an interactable object
-        if (thisCollider.IsTouchingLayers(LayerMask.GetMask("Border")) || thisCollider.IsTouchingLayers(LayerMask.GetMask("Interactables")))
+        if (!jumped && (thisCollider.IsTouchingLayers(LayerMask.GetMask("Border")) || thisCollider.IsTouchingLayers(LayerMask.GetMask("Interactables"))))
         {
             // Switch the control scheme depending on what vampire you're controlling
             switch (vampSelected)
@@ -101,6 +102,7 @@ public class VampireMovement : MonoBehaviour
                     if (Input.GetKey(KeyCode.W))
                     {
                         rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+                        jumped = true;
                     }
 
                     break;
@@ -108,10 +110,21 @@ public class VampireMovement : MonoBehaviour
                     if (Input.GetKey(KeyCode.UpArrow))
                     {
                         rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+                        jumped = true;
                     }
 
                     break;
             }
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Border" ||
+            collision.gameObject.name == "Interactables" ||
+            collision.gameObject.name == "Hazard")
+        {
+            jumped = false;
         }
     }
 }
