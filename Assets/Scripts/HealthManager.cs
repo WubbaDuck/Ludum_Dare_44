@@ -6,6 +6,8 @@ public class HealthManager : MonoBehaviour
 {
     private float maxHealth = 100f;
     private float health = 50f;
+    private bool damageable = true;
+    private float damageWaitTime = 1.0f;
 
     public float GetHealth()
     {
@@ -35,7 +37,7 @@ public class HealthManager : MonoBehaviour
         }
     }
 
-    public void ApplyDamage(float amount)
+    public void DecreaseHealth(float amount)
     {
         health -= amount;
 

@@ -22,14 +22,14 @@ public class HealthTransferManager : MonoBehaviour
         // Transfer from top to bottom
         if (Input.GetKey(KeyCode.S))
         {
-            topHealthManager.ApplyDamage(transferStepAmount);
+            topHealthManager.DecreaseHealth(transferStepAmount);
             bottomHealthManager.GiveHealth(transferStepAmount);
         }
 
         // Transfer from bottom to top
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            bottomHealthManager.ApplyDamage(transferStepAmount);
+            bottomHealthManager.DecreaseHealth(transferStepAmount);
             topHealthManager.GiveHealth(transferStepAmount);
         }
     }
