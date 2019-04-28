@@ -23,6 +23,7 @@ public class VampireMovement : MonoBehaviour
     private float moveSpeed = 6f;
     private float jumpPower = 25.0f;
     private bool jumped = false;
+    private bool movementEnabled = true;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +38,7 @@ public class VampireMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.GetComponent<Rigidbody2D>() && !hm.IsVampireDead())
+        if (gameObject.GetComponent<Rigidbody2D>() && !hm.IsVampireDead() && movementEnabled)
         {
             Move(); // Process Movement
             Jump(); // Process Jumping
@@ -136,5 +137,10 @@ public class VampireMovement : MonoBehaviour
         {
             jumped = false;
         }
+    }
+
+    public void DisableMovement()
+    {
+        movementEnabled = false;
     }
 }

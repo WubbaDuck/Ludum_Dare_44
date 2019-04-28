@@ -16,13 +16,17 @@ public class ExitManager : MonoBehaviour
     {
         if (transform.GetChild(0).GetComponent<ExitSignaler>().IsReadyToExit() & transform.GetChild(1).GetComponent<ExitSignaler>().IsReadyToExit())
         {
-            ExitRoutine();
-            gm.LoadNextLevel();
+            StartCoroutine(ExitRoutine());
         }
     }
 
-    void ExitRoutine()
+    IEnumerator ExitRoutine()
     {
-        Debug.Log("Exiting Level");
+        GameObject.Find("Top Vampire").GetComponent<VampireMovement>().DisableMovement();
+        GameObject.Find("Bottom Vampire").GetComponent<VampireMovement>().DisableMovement();
+        GameObject.Find("Top Vampire").GetComponent<Animator>().SetTrigger("Exit Level");
+        GameObject.Find("Bottom Vampire").GetComponent<Animator>().SetTrigger("Exit Level");
+        yield return new WaitForSecondsRealtime(2.0f);
+        gm.LoadNextLevel();
     }
 }
