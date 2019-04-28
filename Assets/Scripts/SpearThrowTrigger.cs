@@ -17,7 +17,7 @@ public class SpearThrowTrigger : MonoBehaviour
     void Update()
     {
         // Disable damage dealing once the spear touches the ground
-        if (thrown && gameObject.transform.GetChild(0).gameObject.GetComponent<Collider2D>().IsTouchingLayers(LayerMask.GetMask("Border")))
+        if (thrown && gameObject.transform.GetChild(0).gameObject.GetComponent<Collider2D>().IsTouchingLayers(LayerMask.GetMask("Border", "Interactables")))
         {
             gameObject.transform.GetChild(0).gameObject.GetComponent<DamageHandler>().Disable();
         }
