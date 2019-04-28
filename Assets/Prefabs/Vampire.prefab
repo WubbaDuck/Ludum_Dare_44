@@ -306,3 +306,4 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: f6a4470343fbbeb458b1c151a504d705, type: 3}
   spawnSound: {fileID: 8300000, guid: 8e9f4b25028c8c54f805bfb07e7bd04a, type: 3}
   deathSound: {fileID: 8300000, guid: eb400f1d9bcbb564ba1619511f0d8613, type: 3}
+  transfusionSound: {fileID: 8300000, guid: 629bda77283c10444997898de5c4c275, type: 3}

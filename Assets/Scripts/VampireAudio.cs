@@ -9,8 +9,10 @@ public class VampireAudio : MonoBehaviour
     public AudioClip jumpSound;
     public AudioClip spawnSound;
     public AudioClip deathSound;
+    public AudioClip transfusionSound;
 
     private float lastWalkSoundTime = 0;
+    private float lastTransfusionSoundTime = 0;
 
     void Start()
     {
@@ -49,6 +51,27 @@ public class VampireAudio : MonoBehaviour
         audioSource.Stop();
         audioSource.clip = deathSound;
         audioSource.Play();
+    }
+
+    public void PlaySound_Transfusion()
+    {
+        float transfusionSoundDelay = 0.334f;
+
+        if (!audioSource.isPlaying && (Time.time - lastTransfusionSoundTime) > transfusionSoundDelay)
+        {
+            audioSource.Stop();
+            audioSource.clip = transfusionSound;
+            audioSource.Play();
+            lastWalkSoundTime = Time.time;
+        }
+    }
+
+    public void StopTransfusionSound()
+    {
+        if (audioSource.clip.name == transfusionSound.name)
+        {
+            audioSource.Stop();
+        }
     }
 
 }

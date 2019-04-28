@@ -8,11 +8,15 @@ public class HealthTransferManager : MonoBehaviour
     private float totalHealth = 0f;
     HealthManager topHealthManager;
     HealthManager bottomHealthManager;
+    VampireAudio topVa;
+    VampireAudio bottomVa;
 
     void Start()
     {
         topHealthManager = GameObject.Find("Top Vampire").GetComponent<HealthManager>();
         bottomHealthManager = GameObject.Find("Bottom Vampire").GetComponent<HealthManager>();
+        topVa = GameObject.Find("Top Vampire").GetComponent<VampireAudio>();
+        bottomVa = GameObject.Find("Bottom Vampire").GetComponent<VampireAudio>();
     }
 
     void Update()
@@ -30,7 +34,12 @@ public class HealthTransferManager : MonoBehaviour
                     {
                         topHealthManager.DecreaseHealth(transferStepAmount);
                         bottomHealthManager.GiveHealth(transferStepAmount);
+                        topVa.PlaySound_Transfusion();
                     }
+                }
+                else
+                {
+                    topVa.StopTransfusionSound();
                 }
 
                 // Transfer from bottom to top
@@ -40,8 +49,18 @@ public class HealthTransferManager : MonoBehaviour
                     {
                         bottomHealthManager.DecreaseHealth(transferStepAmount);
                         topHealthManager.GiveHealth(transferStepAmount);
+                        bottomVa.PlaySound_Transfusion();
                     }
                 }
+                else
+                {
+                    bottomVa.StopTransfusionSound();
+                }
+            }
+            else
+            {
+                topVa.StopTransfusionSound();
+                bottomVa.StopTransfusionSound();
             }
         }
         else
