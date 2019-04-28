@@ -40,12 +40,15 @@ public class HealthManager : MonoBehaviour
 
     public void DecreaseHealth(float amount)
     {
-        health -= amount;
-
-        if (health <= 0)
+        if (damageable)
         {
-            health = 0;
-            Die();
+            health -= amount;
+            Debug.Log(amount);
+            if (health <= 0)
+            {
+                health = 0;
+                Die();
+            }
         }
     }
 
@@ -58,5 +61,15 @@ public class HealthManager : MonoBehaviour
     public bool IsVampireDead()
     {
         return isDead;
+    }
+
+    public bool IsDamageable()
+    {
+        return damageable;
+    }
+
+    public void SetDamageable(bool dmgabl)
+    {
+        damageable = dmgabl;
     }
 }
