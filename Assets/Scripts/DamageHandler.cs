@@ -9,18 +9,30 @@ public class DamageHandler : MonoBehaviour
     [SerializeField] private float damageWaitLength = 0.1f;
 
     private GameObject lastVictim;
+    private bool collisionEnabled = true;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (GetComponent<CompositeCollider2D>().IsTouchingLayers(LayerMask.GetMask("Characters")))
+        if (collisionEnabled && GetComponent<Collider2D>().IsTouchingLayers(LayerMask.GetMask("Characters")))
         {
+            collision.otherRigidbody.AddForce(new Vector2(-600, 0));
             lastVictim = collision.gameObject;
             HealthManager hm = lastVictim.GetComponent<HealthManager>();
             hm.DecreaseHealth(damageAmount);
             hm.SetDamageable(false);
-            collision.rigidbody.velocity = new Vector2(collision.rigidbody.velocity.x, damageVelocityVertical);
+            collision.rigidbody.velocity = new Vector2(0, damageVelocityVertical);
             StartCoroutine(DamageTimer(hm));
         }
+    }
+
+    public void Disable()
+    {
+        collisionEnabled = false;
+    }
+
+    public void Enable()
+    {
+        collisionEnabled = false;
     }
 
     // This time is completed in the damage handler to allow for easier changes in time between damage instances depending on the hazard.

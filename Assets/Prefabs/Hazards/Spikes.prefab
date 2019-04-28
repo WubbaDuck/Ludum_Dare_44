@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4016602344535997323}
   - component: {fileID: 4016602344535997316}
   - component: {fileID: 4016602344535997320}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,3 +293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4397418da4db28947b8d2e95e0c18526, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageAmount: 20
+  damageVelocityVertical: 20
+  damageWaitLength: 0.1

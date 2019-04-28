@@ -16,7 +16,7 @@ public class VampireMovement : MonoBehaviour
 
     Rigidbody2D rb;
     SpriteRenderer sr;
-    BoxCollider2D bc;
+    CapsuleCollider2D thisCollider;
 
     private float moveSpeed = 6f;
     private float jumpPower = 25.0f;
@@ -26,7 +26,7 @@ public class VampireMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-        bc = GetComponent<BoxCollider2D>();
+        thisCollider = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
@@ -92,7 +92,7 @@ public class VampireMovement : MonoBehaviour
     void Jump()
     {
         // Don't allow jumping unless the vampire is touching the ground or an interactable object
-        if (bc.IsTouchingLayers(LayerMask.GetMask("Border")) | bc.IsTouchingLayers(LayerMask.GetMask("Interactables")))
+        if (thisCollider.IsTouchingLayers(LayerMask.GetMask("Border")) || thisCollider.IsTouchingLayers(LayerMask.GetMask("Interactables")))
         {
             // Switch the control scheme depending on what vampire you're controlling
             switch (vampSelected)
