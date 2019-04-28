@@ -13,4 +13,15 @@ public class BoulderColliderChange : MonoBehaviour
             col.isTrigger = false;
         }
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.IsTouchingLayers(LayerMask.GetMask("Interactables", "Hazards")))
+        {
+            if (!gameObject.GetComponents<AudioSource>() [1].isPlaying)
+            {
+                gameObject.GetComponents<AudioSource>() [1].Play();
+            }
+        }
+    }
 }

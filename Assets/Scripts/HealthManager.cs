@@ -72,6 +72,7 @@ public class HealthManager : MonoBehaviour
         isDead = true;
         anim.SetTrigger("Died");
         va.PlaySound_Death();
+        Destroy(GetComponent<CapsuleCollider2D>());
         StartCoroutine(ReloadCurrentLevel());
     }
 
