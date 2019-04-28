@@ -7,7 +7,6 @@ public class HealthManager : MonoBehaviour
     private float maxHealth = 100f;
     private float health = 50f;
     private bool damageable = true;
-    private float damageWaitTime = 1.0f;
     private bool isDead = false;
 
     public float GetHealth()

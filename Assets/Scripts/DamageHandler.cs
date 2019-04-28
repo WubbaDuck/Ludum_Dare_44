@@ -18,10 +18,14 @@ public class DamageHandler : MonoBehaviour
             collision.otherRigidbody.AddForce(new Vector2(-600, 0));
             lastVictim = collision.gameObject;
             HealthManager hm = lastVictim.GetComponent<HealthManager>();
-            hm.DecreaseHealth(damageAmount);
-            hm.SetDamageable(false);
-            collision.rigidbody.velocity = new Vector2(0, damageVelocityVertical);
-            StartCoroutine(DamageTimer(hm));
+
+            if (hm) // If hm is not null
+            {
+                hm.DecreaseHealth(damageAmount);
+                hm.SetDamageable(false);
+                collision.rigidbody.velocity = new Vector2(0, damageVelocityVertical);
+                StartCoroutine(DamageTimer(hm));
+            }
         }
     }
 
