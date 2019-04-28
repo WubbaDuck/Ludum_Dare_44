@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BoulderThrowTrigger : MonoBehaviour
 {
+    [SerializeField] private int boulderThrowForce = 18000;
     private BoxCollider2D triggerZone;
 
     void Start()
@@ -17,9 +18,8 @@ public class BoulderThrowTrigger : MonoBehaviour
         {
             Rigidbody2D rb = gameObject.transform.GetChild(0).gameObject.GetComponent<Rigidbody2D>();
             rb.bodyType = RigidbodyType2D.Dynamic;
-            rb.AddForce(new Vector2(18000, 0));
+            rb.AddForce(new Vector2(boulderThrowForce, 0));
             Destroy(gameObject.GetComponent<BoxCollider2D>());
         }
     }
-
 }

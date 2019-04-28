@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63e8ed38c362cf4a839036d42ce6f9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boulderThrowForce: 18000
 --- !u!1 &6789477972162965695
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6789477972162965692}
   - component: {fileID: 6789477972162965693}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hazards_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
