@@ -8,6 +8,7 @@ public class HealthManager : MonoBehaviour
     private float health = 50f;
     private bool damageable = true;
     private float damageWaitTime = 1.0f;
+    private bool isDead = false;
 
     public float GetHealth()
     {
@@ -50,6 +51,12 @@ public class HealthManager : MonoBehaviour
 
     public void Die()
     {
+        isDead = true;
         Debug.LogError("Death Not Implemented");
+    }
+
+    public bool IsVampireDead()
+    {
+        return isDead;
     }
 }
