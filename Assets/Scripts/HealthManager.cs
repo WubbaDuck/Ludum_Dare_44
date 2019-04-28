@@ -95,9 +95,16 @@ public class HealthManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(0.5f);
 
-        transform.parent.GetChild(0).GetComponent<Animator>().SetTrigger("Died");
-        transform.parent.GetChild(1).GetComponent<Animator>().SetTrigger("Died");
-        va.PlaySound_Death();
+        // Kill the other vampire
+        if (!transform.parent.GetChild(0).GetComponent<HealthManager>().IsVampireDead())
+        {
+            transform.parent.GetChild(0).GetComponent<HealthManager>().Die();
+        }
+
+        if (!transform.parent.GetChild(1).GetComponent<HealthManager>().IsVampireDead())
+        {
+            transform.parent.GetChild(1).GetComponent<HealthManager>().Die();
+        }
 
         yield return new WaitForSecondsRealtime(1.5f);
         gm.ReloadCurrentLevel();

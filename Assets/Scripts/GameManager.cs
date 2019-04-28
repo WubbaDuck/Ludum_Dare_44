@@ -10,9 +10,21 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(name);
     }
 
+    public void LoadLevel(int index)
+    {
+        SceneManager.LoadScene(index);
+    }
+
     public void LoadNextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if ((SceneManager.GetActiveScene().buildIndex + 1) > (SceneManager.sceneCountInBuildSettings) - 1)
+        {
+            LoadMenu();
+        }
+        else
+        {
+            LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     public void LoadFirstLevel()

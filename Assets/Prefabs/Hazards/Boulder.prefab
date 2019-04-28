@@ -51,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 40
   damageVelocityVertical: 10
-  damageWaitLength: 2
+  damageWaitLength: 0.25
 --- !u!58 &6789477971265745327
 CircleCollider2D:
   m_ObjectHideFlags: 0
