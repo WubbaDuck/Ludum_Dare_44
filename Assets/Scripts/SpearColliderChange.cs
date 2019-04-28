@@ -10,6 +10,7 @@ public class SpearColliderChange : MonoBehaviour
         {
             PolygonCollider2D col = gameObject.GetComponent<PolygonCollider2D>();
             col.isTrigger = false;
+            gameObject.GetComponents<AudioSource>() [1].Play();
         }
     }
 }

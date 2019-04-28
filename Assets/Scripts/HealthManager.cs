@@ -10,11 +10,13 @@ public class HealthManager : MonoBehaviour
     private bool isDead = false;
     private GameManager gm;
     private Animator anim;
+    private VampireAudio va;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         gm = FindObjectOfType<GameManager>();
+        va = GetComponent<VampireAudio>();
     }
 
     public float GetHealth()
@@ -69,6 +71,7 @@ public class HealthManager : MonoBehaviour
     {
         isDead = true;
         anim.SetTrigger("Died");
+        va.PlaySound_Death();
         StartCoroutine(ReloadCurrentLevel());
     }
 
@@ -93,6 +96,7 @@ public class HealthManager : MonoBehaviour
 
         transform.parent.GetChild(0).GetComponent<Animator>().SetTrigger("Died");
         transform.parent.GetChild(1).GetComponent<Animator>().SetTrigger("Died");
+        va.PlaySound_Death();
 
         yield return new WaitForSecondsRealtime(1.5f);
         gm.ReloadCurrentLevel();

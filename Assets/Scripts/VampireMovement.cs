@@ -19,6 +19,7 @@ public class VampireMovement : MonoBehaviour
     private BoxCollider2D thisCollider;
     private Animator anim;
     private HealthManager hm;
+    private VampireAudio va;
 
     private float moveSpeed = 6f;
     private float jumpPower = 25.0f;
@@ -33,6 +34,9 @@ public class VampireMovement : MonoBehaviour
         thisCollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
         hm = GetComponent<HealthManager>();
+        va = GetComponent<VampireAudio>();
+
+        va.PlaySound_Spawn();
     }
 
     // Update is called once per frame
@@ -64,6 +68,7 @@ public class VampireMovement : MonoBehaviour
                         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
                         sr.flipX = false;
                         anim.SetBool("Walking", true);
+                        va.PlaySound_Walk();
                     }
 
                     if (Input.GetKey(KeyCode.A)) // Move Left
@@ -71,6 +76,7 @@ public class VampireMovement : MonoBehaviour
                         rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
                         sr.flipX = true;
                         anim.SetBool("Walking", true);
+                        va.PlaySound_Walk();
                     }
                 }
                 break;
@@ -88,6 +94,7 @@ public class VampireMovement : MonoBehaviour
                         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
                         sr.flipX = false;
                         anim.SetBool("Walking", true);
+                        va.PlaySound_Walk();
                     }
 
                     if (Input.GetKey(KeyCode.LeftArrow)) // Move Left
@@ -95,6 +102,7 @@ public class VampireMovement : MonoBehaviour
                         rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
                         sr.flipX = true;
                         anim.SetBool("Walking", true);
+                        va.PlaySound_Walk();
                     }
                 }
                 break;
@@ -115,6 +123,7 @@ public class VampireMovement : MonoBehaviour
                         rb.velocity = new Vector2(rb.velocity.x, jumpPower);
                         jumped = true;
                         anim.SetTrigger("Jumped");
+                        va.PlaySound_Jump();
                     }
 
                     break;
@@ -124,6 +133,7 @@ public class VampireMovement : MonoBehaviour
                         rb.velocity = new Vector2(rb.velocity.x, jumpPower);
                         jumped = true;
                         anim.SetTrigger("Jumped");
+                        va.PlaySound_Jump();
                     }
 
                     break;

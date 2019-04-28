@@ -9,6 +9,7 @@ public class BoulderColliderChange : MonoBehaviour
         if (collider.name.Contains("Border"))
         {
             CircleCollider2D col = gameObject.GetComponent<CircleCollider2D>();
+            gameObject.GetComponents<AudioSource>() [1].Play();
             col.isTrigger = false;
         }
     }

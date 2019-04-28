@@ -10,6 +10,19 @@ public class DamageHandler : MonoBehaviour
 
     private GameObject lastVictim;
     private bool collisionEnabled = true;
+    private AudioSource damageAudio;
+
+    void Start()
+    {
+        if (GetComponents<AudioSource>().Length > 0)
+        {
+            damageAudio = GetComponents<AudioSource>() [0];
+        }
+        else
+        {
+            damageAudio = GetComponent<AudioSource>();
+        }
+    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -19,11 +32,14 @@ public class DamageHandler : MonoBehaviour
             lastVictim = collision.gameObject;
             HealthManager hm = lastVictim.GetComponent<HealthManager>();
 
-            if (hm && !hm.IsVampireDead()) // If hm is not null
+            if (hm && hm.IsDamageable() && !hm.IsVampireDead()) // If hm is not null
             {
                 hm.ApplyDamage(damageAmount);
                 hm.SetDamageable(false);
                 collision.rigidbody.velocity = new Vector2(0, damageVelocityVertical);
+
+                damageAudio.Play();
+
                 StartCoroutine(DamageTimer(hm));
             }
         }

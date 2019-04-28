@@ -25,6 +25,8 @@ public class PancakerDropTrigger : MonoBehaviour
         if (collider.name.Contains("Vampire"))
         {
             gameObject.transform.GetChild(0).gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            gameObject.transform.GetChild(0).gameObject.GetComponents<AudioSource>() [1].Play();
+            Destroy(triggerZone);
         }
     }
 
