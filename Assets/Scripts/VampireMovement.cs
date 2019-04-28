@@ -93,7 +93,7 @@ public class VampireMovement : MonoBehaviour
     void Jump()
     {
         // Don't allow jumping unless the vampire is touching the ground or an interactable object
-        if (!jumped && (thisCollider.IsTouchingLayers(LayerMask.GetMask("Border")) || thisCollider.IsTouchingLayers(LayerMask.GetMask("Interactables"))))
+        if (!jumped && (thisCollider.IsTouchingLayers(LayerMask.GetMask("Border", "Interactables", "Hazards"))))
         {
             // Switch the control scheme depending on what vampire you're controlling
             switch (vampSelected)
@@ -120,9 +120,7 @@ public class VampireMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Border" ||
-            collision.gameObject.name == "Interactables" ||
-            collision.gameObject.name == "Hazard")
+        if (collision.otherCollider.IsTouchingLayers(LayerMask.GetMask("Border", "Interactables", "Hazards")))
         {
             jumped = false;
         }

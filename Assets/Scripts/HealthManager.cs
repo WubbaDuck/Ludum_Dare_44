@@ -8,6 +8,12 @@ public class HealthManager : MonoBehaviour
     private float health = 50f;
     private bool damageable = true;
     private bool isDead = false;
+    private GameManager gm;
+
+    void Start()
+    {
+        gm = FindObjectOfType<GameManager>();
+    }
 
     public float GetHealth()
     {
@@ -54,7 +60,7 @@ public class HealthManager : MonoBehaviour
     public void Die()
     {
         isDead = true;
-        Debug.LogError("Death Not Implemented");
+        StartCoroutine(ReloadCurrentLevel());
     }
 
     public bool IsVampireDead()
@@ -70,5 +76,11 @@ public class HealthManager : MonoBehaviour
     public void SetDamageable(bool dmgabl)
     {
         damageable = dmgabl;
+    }
+
+    IEnumerator ReloadCurrentLevel()
+    {
+        yield return new WaitForSecondsRealtime(2);
+        gm.ReloadCurrentLevel();
     }
 }

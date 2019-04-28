@@ -25,6 +25,11 @@ public class GameManager : MonoBehaviour
         LoadLevel("Menu");
     }
 
+    public void ReloadCurrentLevel()
+    {
+        LoadLevel(SceneManager.GetActiveScene().name);
+    }
+
     public void PauseGame()
     {
 
