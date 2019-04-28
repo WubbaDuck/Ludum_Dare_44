@@ -19,23 +19,26 @@ public class HealthTransferManager : MonoBehaviour
     {
         totalHealth = topHealthManager.GetHealth() + bottomHealthManager.GetHealth();
 
-        // Transfer from top to bottom
-        if (Input.GetKey(KeyCode.S))
+        if (!bottomHealthManager.IsVampireDead() && !topHealthManager.IsVampireDead())
         {
-            if ((topHealthManager.GetHealth() - transferStepAmount) >= 0 && !topHealthManager.IsVampireDead())
+            // Transfer from top to bottom
+            if (Input.GetKey(KeyCode.S))
             {
-                topHealthManager.DecreaseHealth(transferStepAmount);
-                bottomHealthManager.GiveHealth(transferStepAmount);
+                if ((topHealthManager.GetHealth() - transferStepAmount) >= 0)
+                {
+                    topHealthManager.DecreaseHealth(transferStepAmount);
+                    bottomHealthManager.GiveHealth(transferStepAmount);
+                }
             }
-        }
 
-        // Transfer from bottom to top
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            if ((bottomHealthManager.GetHealth() - transferStepAmount) >= 0 && !bottomHealthManager.IsVampireDead())
+            // Transfer from bottom to top
+            if (Input.GetKey(KeyCode.DownArrow))
             {
-                bottomHealthManager.DecreaseHealth(transferStepAmount);
-                topHealthManager.GiveHealth(transferStepAmount);
+                if ((bottomHealthManager.GetHealth() - transferStepAmount) >= 0)
+                {
+                    bottomHealthManager.DecreaseHealth(transferStepAmount);
+                    topHealthManager.GiveHealth(transferStepAmount);
+                }
             }
         }
     }
