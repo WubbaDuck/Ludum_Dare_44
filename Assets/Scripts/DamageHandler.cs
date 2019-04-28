@@ -19,9 +19,9 @@ public class DamageHandler : MonoBehaviour
             lastVictim = collision.gameObject;
             HealthManager hm = lastVictim.GetComponent<HealthManager>();
 
-            if (hm) // If hm is not null
+            if (hm && !hm.IsVampireDead()) // If hm is not null
             {
-                hm.DecreaseHealth(damageAmount);
+                hm.ApplyDamage(damageAmount);
                 hm.SetDamageable(false);
                 collision.rigidbody.velocity = new Vector2(0, damageVelocityVertical);
                 StartCoroutine(DamageTimer(hm));

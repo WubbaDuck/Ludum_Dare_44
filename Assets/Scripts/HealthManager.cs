@@ -9,9 +9,11 @@ public class HealthManager : MonoBehaviour
     private bool damageable = true;
     private bool isDead = false;
     private GameManager gm;
+    private Animator anim;
 
     void Start()
     {
+        anim = GetComponent<Animator>();
         gm = FindObjectOfType<GameManager>();
     }
 
@@ -57,9 +59,16 @@ public class HealthManager : MonoBehaviour
         }
     }
 
+    public void ApplyDamage(float amount)
+    {
+        DecreaseHealth(amount);
+        anim.SetTrigger("Damage Taken");
+    }
+
     public void Die()
     {
         isDead = true;
+        anim.SetTrigger("Died");
         StartCoroutine(ReloadCurrentLevel());
     }
 
@@ -80,7 +89,12 @@ public class HealthManager : MonoBehaviour
 
     IEnumerator ReloadCurrentLevel()
     {
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        transform.parent.GetChild(0).GetComponent<Animator>().SetTrigger("Died");
+        transform.parent.GetChild(1).GetComponent<Animator>().SetTrigger("Died");
+
+        yield return new WaitForSecondsRealtime(1.5f);
         gm.ReloadCurrentLevel();
     }
 }

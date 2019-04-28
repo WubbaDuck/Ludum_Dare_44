@@ -14,9 +14,11 @@ public class VampireMovement : MonoBehaviour
 
     public vampOptions vampSelected;
 
-    Rigidbody2D rb;
-    SpriteRenderer sr;
-    BoxCollider2D thisCollider;
+    private Rigidbody2D rb;
+    private SpriteRenderer sr;
+    private BoxCollider2D thisCollider;
+    private Animator anim;
+    private HealthManager hm;
 
     private float moveSpeed = 6f;
     private float jumpPower = 25.0f;
@@ -28,12 +30,14 @@ public class VampireMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         thisCollider = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
+        hm = GetComponent<HealthManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.GetComponent<Rigidbody2D>())
+        if (gameObject.GetComponent<Rigidbody2D>() && !hm.IsVampireDead())
         {
             Move(); // Process Movement
             Jump(); // Process Jumping
@@ -47,9 +51,10 @@ public class VampireMovement : MonoBehaviour
         {
             case vampOptions.TOP_VAMPIRE:
                 // Stop horizontal movement if horizontal keys are not pressed or both are pressed
-                if (!(Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.D)) | (Input.GetKey(KeyCode.A) & Input.GetKey(KeyCode.D)))
+                if (!(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
                 {
                     rb.velocity = new Vector2(0, rb.velocity.y);
+                    anim.SetBool("Walking", false);
                 }
                 else
                 {
@@ -57,20 +62,23 @@ public class VampireMovement : MonoBehaviour
                     {
                         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
                         sr.flipX = false;
+                        anim.SetBool("Walking", true);
                     }
 
                     if (Input.GetKey(KeyCode.A)) // Move Left
                     {
                         rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
                         sr.flipX = true;
+                        anim.SetBool("Walking", true);
                     }
                 }
                 break;
             case vampOptions.BOTTOM_VAMPIRE:
                 // Stop horizontal movement if horizontal keys are not pressed or both are pressed
-                if (!(Input.GetKey(KeyCode.RightArrow) | Input.GetKey(KeyCode.LeftArrow)) | (Input.GetKey(KeyCode.RightArrow) & Input.GetKey(KeyCode.LeftArrow)))
+                if (!(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow)))
                 {
                     rb.velocity = new Vector2(0, rb.velocity.y);
+                    anim.SetBool("Walking", false);
                 }
                 else
                 {
@@ -78,12 +86,14 @@ public class VampireMovement : MonoBehaviour
                     {
                         rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
                         sr.flipX = false;
+                        anim.SetBool("Walking", true);
                     }
 
                     if (Input.GetKey(KeyCode.LeftArrow)) // Move Left
                     {
                         rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
                         sr.flipX = true;
+                        anim.SetBool("Walking", true);
                     }
                 }
                 break;
@@ -103,6 +113,7 @@ public class VampireMovement : MonoBehaviour
                     {
                         rb.velocity = new Vector2(rb.velocity.x, jumpPower);
                         jumped = true;
+                        anim.SetTrigger("Jumped");
                     }
 
                     break;
@@ -111,6 +122,7 @@ public class VampireMovement : MonoBehaviour
                     {
                         rb.velocity = new Vector2(rb.velocity.x, jumpPower);
                         jumped = true;
+                        anim.SetTrigger("Jumped");
                     }
 
                     break;

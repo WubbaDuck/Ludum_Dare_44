@@ -17,29 +17,37 @@ public class HealthTransferManager : MonoBehaviour
 
     void Update()
     {
-        totalHealth = topHealthManager.GetHealth() + bottomHealthManager.GetHealth();
-
-        if (!bottomHealthManager.IsVampireDead() && !topHealthManager.IsVampireDead())
+        if (topHealthManager && bottomHealthManager)
         {
-            // Transfer from top to bottom
-            if (Input.GetKey(KeyCode.S))
-            {
-                if ((topHealthManager.GetHealth() - transferStepAmount) >= 0)
-                {
-                    topHealthManager.DecreaseHealth(transferStepAmount);
-                    bottomHealthManager.GiveHealth(transferStepAmount);
-                }
-            }
+            totalHealth = topHealthManager.GetHealth() + bottomHealthManager.GetHealth();
 
-            // Transfer from bottom to top
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (!bottomHealthManager.IsVampireDead() && !topHealthManager.IsVampireDead())
             {
-                if ((bottomHealthManager.GetHealth() - transferStepAmount) >= 0)
+                // Transfer from top to bottom
+                if (Input.GetKey(KeyCode.S))
                 {
-                    bottomHealthManager.DecreaseHealth(transferStepAmount);
-                    topHealthManager.GiveHealth(transferStepAmount);
+                    if ((topHealthManager.GetHealth() - transferStepAmount) >= 0)
+                    {
+                        topHealthManager.DecreaseHealth(transferStepAmount);
+                        bottomHealthManager.GiveHealth(transferStepAmount);
+                    }
+                }
+
+                // Transfer from bottom to top
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    if ((bottomHealthManager.GetHealth() - transferStepAmount) >= 0)
+                    {
+                        bottomHealthManager.DecreaseHealth(transferStepAmount);
+                        topHealthManager.GiveHealth(transferStepAmount);
+                    }
                 }
             }
+        }
+        else
+        {
+            topHealthManager = GameObject.Find("Top Vampire").GetComponent<HealthManager>();
+            bottomHealthManager = GameObject.Find("Bottom Vampire").GetComponent<HealthManager>();
         }
     }
 }
