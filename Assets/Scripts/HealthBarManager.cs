@@ -15,7 +15,6 @@ public class HealthBarManager : MonoBehaviour
         bottomVampHealthManager = GameObject.Find("Bottom Vampire").GetComponent<HealthManager>();
         topHealthBarFillTransform = GameObject.Find("Top Health Bar Fill").transform;
         bottomHealthBarFillTransform = GameObject.Find("Bottom Health Bar Fill").transform;
-
     }
 
     void Update()
