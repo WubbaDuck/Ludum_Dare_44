@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 15
   damageVelocityVertical: 10
-  damageWaitLength: 0.25
+  damageWaitLength: 0.5
 --- !u!50 &1534877862706469838
 Rigidbody2D:
   serializedVersion: 4
