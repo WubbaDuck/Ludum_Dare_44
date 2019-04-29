@@ -36,7 +36,7 @@ public class VampireMovement : MonoBehaviour
         hm = GetComponent<HealthManager>();
         va = GetComponent<VampireAudio>();
 
-        va.PlaySound_Spawn();
+        StartCoroutine(PlaySpawnSound());
     }
 
     // Update is called once per frame
@@ -152,5 +152,11 @@ public class VampireMovement : MonoBehaviour
     public void DisableMovement()
     {
         movementEnabled = false;
+    }
+
+    IEnumerator PlaySpawnSound()
+    {
+        yield return new WaitForFixedUpdate();
+        va.PlaySound_Spawn();
     }
 }
